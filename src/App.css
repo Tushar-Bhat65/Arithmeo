@@ -1,0 +1,56 @@
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Rubik', sans-serif;
+}
+
+/* Cards */
+.card {
+  background: #111;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.7), inset 0 0 2px rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset 0 0 2px rgba(255,255,255,0.1);
+}
+
+/* Logo / Header */
+h1 {
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+}
+
+/* Button style */
+button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+button:hover {
+  background: linear-gradient(to right, #8b5cf6, #3b82f6);
+  transform: scale(1.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+}

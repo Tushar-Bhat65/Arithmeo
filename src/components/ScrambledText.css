@@ -1,0 +1,13 @@
+.text-block {
+  font-family: monospace;
+  font-size: clamp(24px, 8vw, 72px);
+  font-weight: bold;
+  font-style: italic;
+  color: #fff;
+  text-align: center;
+}
+
+.char {
+  will-change: transform;
+  display: inline-block;
+}

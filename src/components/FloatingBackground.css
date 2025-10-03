@@ -1,0 +1,46 @@
+.floating-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* behind all content */
+  pointer-events: none; /* clicks go through */
+  overflow: hidden;
+  background: transparent;
+}
+
+.floating-word {
+  position: absolute;
+  color: rgba(0, 180, 255, 0.45); /* faint soft blue */
+  font-size: 2.25rem;
+  font-family: 'Rubik', sans-serif;
+  text-shadow: 0 0 8px rgba(0, 180, 255, 0.6);
+  user-select: none;
+  animation-name: floatAnimation;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(20px, -10px) rotate(10deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-20px, 20px) rotate(-10deg);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(10px, -20px) rotate(5deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.3;
+  }
+}

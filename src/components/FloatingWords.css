@@ -1,0 +1,22 @@
+.floating-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* behind everything */
+  pointer-events: none;
+  overflow: hidden;
+  background: black; /* fallback */
+}
+
+.floating-word {
+  position: absolute;
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: #00cfff; /* bright cyan glow */
+  opacity: 0.15; /* soft */
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4),
+               0 0 12px rgba(0, 255, 255, 0.3),
+               0 0 16px rgba(0, 255, 255, 0.2);
+  user-select: none;
+  white-space: nowrap;
+  will-change: transform;
+}

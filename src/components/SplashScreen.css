@@ -1,0 +1,31 @@
+.splash-container {
+  position: fixed;       /* fixed to cover entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;         /* full height */
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 9999;         /* above everything */
+}
+
+.splash-logo {
+  position: absolute;    /* absolutely centered */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(2rem, 6vw, 5rem);
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  z-index: 10;           /* above falling words */
+  text-align: center;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
