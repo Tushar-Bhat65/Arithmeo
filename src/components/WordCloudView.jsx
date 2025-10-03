@@ -1,11 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import cloud from "d3-cloud";
 
 const WordCloudView = ({ wordsArray }) => {
   const svgRef = useRef(null);
+  const containerRef = useRef(null);
   const [isReady, setIsReady] = useState(false);
-  const [dimensions] = useState({ width: 800, height: 400 });
+  const [dimensions, setDimensions] = useState({ width: 800, height: 400 });
+
+  // Responsive sizing
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const width = containerRef.current.offsetWidth;
+        const height = Math.min(400, width * 0.6); // Adaptive height
+        setDimensions({ width, height });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
   useEffect(() => {
     if (!wordsArray || wordsArray.length === 0) {
@@ -21,7 +37,7 @@ const WordCloudView = ({ wordsArray }) => {
       .padding(5)
       .rotate(() => (Math.random() > 0.5 ? 0 : 90))
       .font("Impact")
-      .fontSize((d) => Math.log2(d.size + 1) * 12)
+      .fontSize((d) => Math.log2(d.size + 1) * Math.max(8, dimensions.width / 80))
       .on("end", (words) => {
         const svg = d3.select(svgRef.current);
         svg.selectAll("*").remove();
@@ -55,15 +71,16 @@ const WordCloudView = ({ wordsArray }) => {
 
   return (
     <div
+      ref={containerRef}
       style={{
         width: "100%",
-        height: "400px",
+        height: dimensions.height,
         border: "1px solid #ccc",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      <svg ref={svgRef}></svg>
+      <svg ref={svgRef} style={{ width: "100%", height: "100%" }}></svg>
 
       {!wordsArray || wordsArray.length === 0 ? (
         <div
